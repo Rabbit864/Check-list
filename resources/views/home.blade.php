@@ -9,7 +9,7 @@
                     <button class="btn btn-primary offset-md-5" data-toggle="modal" data-target="#create-check-list-modal">Добавить чек лист</button>
                 </div>
 
-                <div class="card-body"><ul class="list-group">
+                <div class="card-body">
                     <table class="table">
                         <thead>
                             <tr>
@@ -25,7 +25,7 @@
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td >{{$checkList->name}}</td>
                                     <td>{{$checkList->description}}</td>
-                                    <td> <a href="#" class="btn btn-primary">Главная страница</a></td>
+                                    <td> <a href="{{ route('detailing',$checkList->id) }}" class="btn btn-primary">Страница детализации</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

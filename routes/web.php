@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CheckListController;
+use App\Http\Controllers\DetailingController;
+use App\Http\Controllers\ParagraphController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -17,6 +19,8 @@ Route::get('/auth/google/callback', [LoginController::class, 'handleProviderCall
 
 
 Route::post('/createCheckList',[CheckListController::class,'create'])->name('create-check-list');
-
+Route::get('/detailing/{id}',[DetailingController::class,'show'])->name('detailing');
+Route::post('/createParagraph/{checkList}',[ParagraphController::class,'create'])->name('create-paragraph');
+Route::post('/updateStatus/{paragraph}',[ParagraphController::class,'updateStatus'])->name('update-status');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
