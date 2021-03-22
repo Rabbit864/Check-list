@@ -17,7 +17,7 @@ class CreateCheckListsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');;
             $table->timestamps();
         });
     }
