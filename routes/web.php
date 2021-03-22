@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CheckListController;
 use App\Http\Controllers\DetailingController;
 use App\Http\Controllers\ParagraphController;
+use App\Http\Controllers\SubParagraphController;
+use App\Models\SubParagraph;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -22,5 +24,7 @@ Route::post('/createCheckList',[CheckListController::class,'create'])->name('cre
 Route::get('/detailing/{id}',[DetailingController::class,'show'])->name('detailing');
 Route::post('/createParagraph/{checkList}',[ParagraphController::class,'create'])->name('create-paragraph');
 Route::post('/updateStatus/{paragraph}',[ParagraphController::class,'updateStatus'])->name('update-status');
+Route::post('/createSubParagraph',[SubParagraphController::class,'create'])->name('create-sub-paragraph');
+Route::post('/updateSubStatus/{subParagraph}', [SubParagraphController::class,'updateStatus'])->name('update-sub-status');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

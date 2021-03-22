@@ -10,6 +10,9 @@
                 </div>
 
                 <div class="card-body">
+                        @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     <table class="table">
                         <thead>
                             <tr>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateParagraphsTable extends Migration
+class CreateSubParagraphsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateParagraphsTable extends Migration
      */
     public function up()
     {
-        Schema::create('paragraphs', function (Blueprint $table) {
+        Schema::create('sub_paragraphs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description')->nullable();
+            $table->foreignId('paragraph_id')->constrained()->onDelete('cascade');
             $table->tinyInteger('status');
-            $table->foreignId('check_list_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateParagraphsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paragraphs');
+        Schema::dropIfExists('sub_paragraphs');
     }
 }

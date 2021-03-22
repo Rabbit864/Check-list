@@ -19,4 +19,8 @@ class Paragraph extends Model
     public function checkList(){
         return $this->belongsTo(CheckList::class);
     }
+
+    public function subParagraphs(){
+        return $this->hasMany(SubParagraph::class);
+    }
 }
