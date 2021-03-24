@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateSubParagraphRequest;
 use App\Models\SubParagraph;
 use Illuminate\Http\Request;
 
 class SubParagraphController extends Controller
 {
-    public function create(Request $request)
+    public function create(CreateSubParagraphRequest $request)
     {
         $subparagraph = SubParagraph::create([
             'name' => $request->name,

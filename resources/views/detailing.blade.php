@@ -3,12 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <a href="{{ route('home') }}" class="btn btn-primary mb-2">Назад</a>
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h1 class="text-center">{{ $checkList->name }}</h1>
                 </div>
                 <div class="card-body">
+                    @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     <button class="btn btn-primary" data-toggle="modal" data-target="#create-paragraph-modal">Добавить пункт</button>
                     <div class="accordeon">
                         @foreach ($checkList->paragraphs as $paragraph)
@@ -147,6 +151,16 @@
                             $('#card-' + paragraph_id + " .sub-paragraphs").append(subParagraph);
                             updateSubStatus();
                             $('.create-sub-paragraph-form').trigger('reset');
+                            if($('*').is(".alert-danger")){
+                                $(".alert-danger").remove();
+                            }
+                            $('#create-sub-paragraph-modal').modal('hide');
+                        },
+                        error: function (data) {
+                            let flag = $('*').is(".alert-danger");
+                            if(!flag){
+                                $('.card-body:first').prepend(`<div class="alert alert-danger">${data.responseJSON.errors.name}</div>`);
+                            }
                             $('#create-sub-paragraph-modal').modal('hide');
                         }
                 });

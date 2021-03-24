@@ -26,5 +26,7 @@ Route::post('/createParagraph/{checkList}',[ParagraphController::class,'create']
 Route::post('/updateStatus/{paragraph}',[ParagraphController::class,'updateStatus'])->name('update-status');
 Route::post('/createSubParagraph',[SubParagraphController::class,'create'])->name('create-sub-paragraph');
 Route::post('/updateSubStatus/{subParagraph}', [SubParagraphController::class,'updateStatus'])->name('update-sub-status');
+Route::put('/updateCheckList/{checkList}',[CheckListController::class,'update'])->name('update-check-list');
+Route::delete('/deleteCheckList/{checkList}', [CheckListController::class,'destroy'])->name('destroy-check-list');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

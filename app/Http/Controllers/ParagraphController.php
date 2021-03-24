@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateParagraphRequest;
 use App\Models\CheckList;
 use App\Models\Paragraph;
 use Illuminate\Http\Request;
 
 class ParagraphController extends Controller
 {
-    public function create(Request $request,CheckList $checkList){
+    public function create(CreateParagraphRequest $request,CheckList $checkList){
         Paragraph::create([
             'name' => $request->name,
             'description' => $request->description,
